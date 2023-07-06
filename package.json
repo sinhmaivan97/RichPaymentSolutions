@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/sinhmaivan97/RichPaymentSolutions#readme",
   "devDependencies": {
+    "@cucumber/cucumber": "^9.2.0",
     "@playwright/test": "^1.35.1"
   }
 }
