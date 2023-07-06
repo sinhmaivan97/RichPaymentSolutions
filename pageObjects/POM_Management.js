@@ -6,6 +6,7 @@ class POM_Management {
     this.registerPageObject = new RegisterPageObject(this.page);
   }
 
+
   getRegisterPage() {
     return this.registerPageObject;
   }
