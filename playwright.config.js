@@ -25,7 +25,7 @@ module.exports = defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'https://landing.getrichpos.com/login',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -35,6 +35,9 @@ module.exports = defineConfig({
 
     //Maximum time each action such as 'click()' can takeDefault to 0 (no limit)
     actionTimeout: 0,
+
+    // Name of the browser that runs tests. For example `chromium`, `firefox`, `webkit`.
+    browserName: 'chromium',
   },
 
   /* Configure projects for major browsers */
