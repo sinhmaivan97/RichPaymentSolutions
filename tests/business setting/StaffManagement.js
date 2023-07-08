@@ -1,0 +1,1 @@
+const {POM_Management} = require('../../pageObjects/POM_Management');
