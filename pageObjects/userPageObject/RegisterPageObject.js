@@ -32,12 +32,12 @@ class RegisterPageObject {
   }
 
   async TC01_EmptyData() {
-    console.log("Check validation when user does'nt enter all textbox");
+    // console.log("Check validation when user does'nt enter all textbox");
     await this.btn_register.click();
   }
 
   async TC02_BlankField(username, email, password) {
-    console.log("Check validation when user does'nt enter business name, phone number and confirm password");
+    // console.log("Check validation when user does'nt enter business name, phone number and confirm password");
 
     console.log("Enter username : " + username);
     await this.txb_username.fill(username);
@@ -53,7 +53,7 @@ class RegisterPageObject {
   }
 
   async TC03_InvalidPhoneNumber(username,business,phone,email,password,confirmpassword) {
-    console.log("Check validation when user enter invalid phonenumber");
+    // console.log("Check validation when user enter invalid phonenumber");
 
     console.log("Enter username : " + username);
     await this.txb_username.fill(username);
@@ -78,7 +78,7 @@ class RegisterPageObject {
   }
 
   async TC04_InvalidEmail(username,business,phone,email,password,confirmpassword) {
-    console.log("Check validation when user enter invalid email");
+    // console.log("Check validation when user enter invalid email");
 
     console.log("Enter username : " + username);
     await this.txb_username.fill(username);
@@ -103,7 +103,7 @@ class RegisterPageObject {
   }
 
   async TC05_InvalidPassword(username,business,phone,email,password,confirmpassword) {
-    console.log("Check validation when user enter invalid password");
+    // console.log("Check validation when user enter invalid password");
 
     console.log("Enter username : " + username);
     await this.txb_username.fill(username);
@@ -128,7 +128,7 @@ class RegisterPageObject {
   }
 
   async TC06_PasswordAndConfirmPasswordNotMatching(username,business,phone,email,password,confirmpassword) {
-    console.log("Check validation when user enter password and confirm password matching");
+    // console.log("Check validation when user enter password and confirm password matching");
 
     console.log("Enter username : " + username);
     await this.txb_username.fill(username);
@@ -153,7 +153,7 @@ class RegisterPageObject {
   }
 
   async TC07_ValidInformation(username,business,phone,email,password,confirmpassword) {
-    console.log("Check validation when user enter valid information");
+    // console.log("Check validation when user enter valid information");
 
     console.log("Enter username : " + username);
     await this.txb_username.fill(username);
@@ -178,7 +178,7 @@ class RegisterPageObject {
   }
 
   async TC08_EmailAlreadyExist(username,business,phone,email,password,confirmpassword) {
-    console.log("Check validation when user enter email already exist");
+    // console.log("Check validation when user enter email already exist");
 
     console.log("Enter username : " + username);
     await this.txb_username.fill(username);
