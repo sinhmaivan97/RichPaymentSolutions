@@ -20,5 +20,8 @@
     "@cucumber/pretty-formatter": "^1.0.0",
     "@playwright/test": "^1.35.1",
     "playwright-bdd": "^3.2.1"
+  },
+  "dependencies": {
+    "@cucumber/language-service": "^1.4.0"
   }
 }
