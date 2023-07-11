@@ -2,7 +2,7 @@
     "username" : "ab",
     "business_name" : "",
     "phone_number" : "123456",
-    "email_address" : "sinhmai99@gmail-com",
+    "email_address" : "sinhmai99@gmail*com",
     "password" : "123456789",
     "confirm_password" : "123456789"
 }

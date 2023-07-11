@@ -1,11 +1,10 @@
-const { RegisterPageObject } = require("./RegisterPageObject");
+const { RegisterPageObject } = require('../pageObjects/userPageObject/RegisterPageObject');
 
 class POM_Management {
   constructor(page) {
     this.page = page;
     this.registerPageObject = new RegisterPageObject(this.page);
   }
-
 
   getRegisterPage() {
     return this.registerPageObject;
