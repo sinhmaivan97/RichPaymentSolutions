@@ -1,7 +1,5 @@
-class GiftcardPageObject{
+exports.GiftcardPageObject = class GiftcardPageObject{
     constructor(page){
         this.page = page();
     }
 }
-
-module.exports = {GiftcardPageObject};

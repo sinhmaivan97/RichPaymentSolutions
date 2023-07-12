@@ -1,7 +1,5 @@
-class ServicePageObject{
+exports.ServicePageObject = class ServicePageObject{
     constructor(page){
         this.page = page();
     }
 }
-
-module.exports = {ServicePageObject};

@@ -1,7 +1,5 @@
-class AppSettingsPageObject{
+exports.AppSettingsPageObject = class AppSettingsPageObject{
     constructor(page){
         this.page = page();
     }
 }
-
-module.exports = {AppSettingsPageObject};

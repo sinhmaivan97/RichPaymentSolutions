@@ -1,7 +1,5 @@
-class SalesReportPageObject{
+exports.SalesReportPageObject = class SalesReportPageObject{
     constructor (page){
         this.page = page();
     }
 }
-
-module.exports = {SalesReportPageObject};

@@ -1,6 +1,6 @@
-const { RegisterPageObject } = require('../pageObjects/userPageObject/RegisterPageObject');
+import { RegisterPageObject } from '../pageObjects/userPageObject/RegisterPageObject';
 
-class POM_Management {
+exports.POM_Management = class POM_Management {
   constructor(page) {
     this.page = page;
     this.registerPageObject = new RegisterPageObject(this.page);
@@ -10,5 +10,3 @@ class POM_Management {
     return this.registerPageObject;
   }
 }
-
-module.exports = { POM_Management };
