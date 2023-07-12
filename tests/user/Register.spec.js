@@ -1,9 +1,9 @@
-import { test, expect } from '@playwright/test';
-import { CommonUtils } from '../../utils/CommonUtils';
-import { POM_Management } from '../../pageObjects/POM_Management';
+const { test, expect } = require('@playwright/test');
+const { CommonUtils } = require('../../utils/CommonUtils');
+const { POM_Management } = require('../../pageObjects/POM_Management');
 
-const correct_infor = JSON.parse(JSON.stringify(require('../../testDatas/correct_infor.json')));
-const incorrect_infor = Json.parse(Json.stringify(require('../../testDatas/incorrect_infor.json')));
+const correct_infor = JSON.parse(JSON.stringify(require('../../data/correct_infor.json')));
+const incorrect_infor = JSON.parse(JSON.stringify(require('../../data/incorrect_infor.json')));
 
 /* Initia correct data test for registration screen */
 const user_correct = correct_infor.username;
@@ -19,48 +19,36 @@ const email_incorrect = incorrect_infor.email_address;
 const password_incorrect = incorrect_infor.password;
 const confirmpassword_incorrect = incorrect_infor.confirm_password;
 
-/* Initia register pageobject by POM_Management */
-const pom_manager = new POM_Management(page);
-const registerPage = pom_manager.getRegisterPage();
+test('Register page', async ({ page }) => {
+	const pom_manager = new POM_Management(page);
+	const registerPage = pom_manager.getRegisterPage();
+	await registerPage.gotoApplication();
 
-test.beforeEach(async () => {
-	/* Open URL */
-	await registerPage.gotoApplicationAndMoveSignUpPage();
-});
-
-test('Check validation when user do not enter all textbox and verify error', async () => {
+	console.log('Check validation when user do not enter all textbox and verify error')
 	await registerPage.TC01_EmptyData();
-});
 
-test('Check validation when user do not enter business name, phone number, confirm password and verify error', async () => {
-	await registerPage.TC02_BlankField(user_correct, email_correct, password_correct)
-});
+	console.log('Check validation when user do not enter business name, phone number, confirm password and verify error');
+	await registerPage.TC02_BlankField(user_correct, email_correct, password_correct);
 
-test('Check validation when user enter invalid phonenumber and verify error', async () => {
+	console.log('Check validation when user enter invalid phonenumber and verify error');
 	await registerPage.TC03_InvalidPhoneNumber(user_correct, business_correct, phonenumber_incorrect, email_correct, password_correct, confirmpassword_correct);
-});
 
-test('Check validation when user enter invalid email and verify error', async () => {
+	console.log('Check validation when user enter invalid email and verify error');
 	await registerPage.TC04_InvalidEmail(user_correct, business_correct, phonenumber_correct, email_incorrect, password_correct, confirmpassword_correct);
-});
 
-test('Check validation when user enter invalid password and verify error', async () => {
+	console.log('Check validation when user enter invalid password and verify error');
 	await registerPage.TC05_InvalidPassword(user_correct, business_correct, phonenumber_correct, email_correct, password_incorrect, confirmpassword_incorrect);
-});
 
-test('Check validation when user enter password and confirm password matching and verify error', async () => {
+	console.log('Check validation when user enter password and confirm password matching and verify error');
 	await registerPage.TC06_PasswordAndConfirmPasswordNotMatching(user_correct, business_correct, phonenumber_correct, email_correct, password_correct, confirmpassword_incorrect);
-});
 
-test('Check validation when user enter valid information and verify error', async () => {
+	console.log('Check validation when user enter valid information and verify error');
 	await registerPage.TC07_ValidInformation(user_correct, business_correct, phonenumber_correct, email_correct, password_correct, confirmpassword_correct);
-});
 
-test('Check validation when user enter email already exist and verify error', async () => {
+	console.log('Check validation when user enter email already exist and verify error');
 	await registerPage.TC08_EmailAlreadyExist(user_correct, business_correct, phonenumber_correct, email_correct, password_correct, confirmpassword_correct);
 });
 
-/*after each for testcase*/
 test.afterEach(async () => {
 	await new CommonUtils().waitForSomeTime(5);
 });

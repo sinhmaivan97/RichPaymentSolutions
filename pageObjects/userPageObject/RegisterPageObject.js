@@ -22,11 +22,10 @@ exports.RegisterPageObject = class RegisterPageObject {
     this.text_confirm_pass = page.getByTestId(":r8:-helper-text");
   }
 
-  async gotoApplicationAndMoveSignUpPage() {
-    const commonUtils = new CommonUtils(this.page);
-    const applicationURL = commonUtils.serverSTAG;
+  async gotoApplication() {
+    const applicationURL = "https://business-settings.stage.devrpay.com/checkout";
 
-    console.log("Go to application: " + applicationURL);
+    console.log('Go to application: ' + applicationURL);
     await this.page.goto(applicationURL);
 
     console.log("Click to Signup Button");

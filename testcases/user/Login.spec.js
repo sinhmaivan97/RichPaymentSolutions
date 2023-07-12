@@ -1,1 +1,0 @@
-import { POM_Management } from '../../pageObjects/POM_Management';
