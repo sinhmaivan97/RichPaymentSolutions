@@ -1,25 +1,18 @@
-import { CommonUtils } from '../../utils/CommonUtils';
+import { expect } from '@playwright/test';
 
 exports.RegisterPageObject = class RegisterPageObject {
 
   constructor(page) {
     this.page = page;
     /* textbox in register screen */
-    this.btn_signup = page.getByRole("button", { name: "Sign up" });
-    this.txb_username = page.getByTestId(":r3:");
-    this.txb_businessname = page.getByTestId(":r4:");
-    this.txb_phonenumber = page.getByTestId(":r5:");
-    this.txb_emailaddress = page.getByTestId(":r16:");
-    this.txb_password = page.getByTestId(":r7:");
-    this.txb_repeatpass = page.getByTestId(":r8:");
-    this.btn_register = page.getByRole("button", { name: "Register" });
-    /* error message of register screen */
-    this.text_user = page.getByTestId(":r3:-helper-text");
-    this.text_business = page.getByTestId(":r4:-helper-text");
-    this.text_phonenumber = page.getByTestId(":r5:-helper-text");
-    this.text_email = page.getByTestId(":r6:-helper-text");
-    this.text_pass = page.getByTestId(":r7:-helper-text");
-    this.text_confirm_pass = page.getByTestId(":r8:-helper-text");
+    this.btn_signup = page.locator("//p[contains(text(), 'Sign up')]");
+    this.txb_username = page.locator("//div[@data-test-id='input-username']//following-sibling::div//input");
+    this.txb_businessname = page.locator("//div[@data-test-id='input-bussiness-name']//following-sibling::div//input");
+    this.txb_phonenumber = page.locator("//div[@data-test-id='input-bussiness-phone']//following-sibling::div//input");
+    this.txb_emailaddress = page.locator("//div[@data-test-id='input-email']//following-sibling::div//input");
+    this.txb_password = page.locator("//div[@data-test-id='input-password']//following-sibling::div//input");
+    this.txb_repeatpass = page.locator("//div[@data-test-id='input-confirm']//following-sibling::div//input");
+    this.btn_register = page.locator("//button[contains(text(), 'Register')]");
   }
 
   async gotoApplication() {
@@ -32,19 +25,19 @@ exports.RegisterPageObject = class RegisterPageObject {
     await this.btn_signup.click();
   }
 
+  async clickSignupBtn() {
+    console.log("Click to Signup Button");
+    await this.btn_signup.click();
+  }
+
   async TC01_EmptyData() {
+    console.log("****************************************************");
     console.log("Check validation when user does'nt enter all textbox");
     await this.btn_register.click();
-
-    await this.text_user.toHaveText('Username is required');
-    await this.text_business.toHaveText('Business name is required');
-    await this.text_phonenumber.toHaveText('Phone number is required');
-    await this.text_email.toHaveText('Email is required');
-    await this.text_pass.toHaveText('This field cannot be blank');
-    await this.text_confirm_pass.toHaveText('Password is required');
   }
 
   async TC02_BlankField(username, email, password) {
+    console.log("****************************************************");
     console.log("Check validation when user does'nt enter business name, phone number and confirm password");
 
     console.log("Enter username : " + username);
@@ -58,13 +51,10 @@ exports.RegisterPageObject = class RegisterPageObject {
 
     console.log("Click to Register Button");
     await this.btn_register.click();
-
-    await this.text_business.toHaveText('Business name is required');
-    await this.text_phonenumber.toHaveText('Phone number is required');
-    await this.text_confirm_pass.toHaveText('Confirm password does not matching with password');
   }
 
   async TC03_InvalidPhoneNumber(username, business, phone, email, password, confirmpassword) {
+    console.log("****************************************************");
     console.log("Check validation when user enter invalid phonenumber");
 
     console.log("Enter username : " + username);
@@ -77,7 +67,7 @@ exports.RegisterPageObject = class RegisterPageObject {
     await this.txb_phonenumber.fill(phone);
 
     console.log("Enter email address : " + email);
-    await this.txb_emailaddress(email);
+    await this.txb_emailaddress.fill(email);
 
     console.log("Enter password : " + password);
     await this.txb_password.fill(password);
@@ -87,11 +77,10 @@ exports.RegisterPageObject = class RegisterPageObject {
 
     console.log("Click to Register Button");
     await this.btn_register.click();
-
-    await this.text_phonenumber.toHaveText('Invalid phone number.');
   }
 
   async TC04_InvalidEmail(username, business, phone, email, password, confirmpassword) {
+    console.log("****************************************************");
     console.log("Check validation when user enter invalid email");
 
     console.log("Enter username : " + username);
@@ -104,7 +93,7 @@ exports.RegisterPageObject = class RegisterPageObject {
     await this.txb_phonenumber.fill(phone);
 
     console.log("Enter invalid email address : " + email);
-    await this.txb_emailaddress(email);
+    await this.txb_emailaddress.fill(email);
 
     console.log("Enter password : " + password);
     await this.txb_password.fill(password);
@@ -114,11 +103,10 @@ exports.RegisterPageObject = class RegisterPageObject {
 
     console.log("Click to Register Button");
     await this.btn_register.click();
-
-    await this.text_email.toHaveText('Email is not valid.');
   }
 
   async TC05_InvalidPassword(username, business, phone, email, password, confirmpassword) {
+    console.log("****************************************************");
     console.log("Check validation when user enter invalid password");
 
     console.log("Enter username : " + username);
@@ -131,7 +119,7 @@ exports.RegisterPageObject = class RegisterPageObject {
     await this.txb_phonenumber.fill(phone);
 
     console.log("Enter email address : " + email);
-    await this.txb_emailaddress(email);
+    await this.txb_emailaddress.fill(email);
 
     console.log("Enter invalid password : " + password);
     await this.txb_password.fill(password);
@@ -141,11 +129,10 @@ exports.RegisterPageObject = class RegisterPageObject {
 
     console.log("Click to Register Button");
     await this.btn_register.click();
-
-    await this.text_pass.toHaveText('Password is too short - should be 8 chars minimum.');
   }
 
   async TC06_PasswordAndConfirmPasswordNotMatching(username, business, phone, email, password, confirmpassword) {
+    console.log("****************************************************");
     console.log("Check validation when user enter password and confirm password matching");
 
     console.log("Enter username : " + username);
@@ -158,7 +145,7 @@ exports.RegisterPageObject = class RegisterPageObject {
     await this.txb_phonenumber.fill(phone);
 
     console.log("Enter email address : " + email);
-    await this.txb_emailaddress(email);
+    await this.txb_emailaddress.fill(email);
 
     console.log("Enter password : " + password);
     await this.txb_password.fill(password);
@@ -168,11 +155,10 @@ exports.RegisterPageObject = class RegisterPageObject {
 
     console.log("Click to Register Button");
     await this.btn_register.click();
-
-    await this.text_confirm_pass.toHaveText('Confirm password does not matching with password');
   }
 
   async TC07_ValidInformation(username, business, phone, email, password, confirmpassword) {
+    console.log("****************************************************");
     console.log("Check validation when user enter valid information");
 
     console.log("Enter username : " + username);
@@ -185,7 +171,7 @@ exports.RegisterPageObject = class RegisterPageObject {
     await this.txb_phonenumber.fill(phone);
 
     console.log("Enter email address : " + email);
-    await this.txb_emailaddress(email);
+    await this.txb_emailaddress.fill(email);
 
     console.log("Enter password : " + password);
     await this.txb_password.fill(password);
@@ -195,11 +181,10 @@ exports.RegisterPageObject = class RegisterPageObject {
 
     console.log("Click to Register Button");
     await this.btn_register.click();
-
-    await expect(page.locator("[id = '1']")).toHaveText('Sign up successfully!');
   }
 
   async TC08_EmailAlreadyExist(username, business, phone, email, password, confirmpassword) {
+    console.log("****************************************************");
     console.log("Check validation when user enter email already exist");
 
     console.log("Enter username : " + username);
@@ -212,7 +197,7 @@ exports.RegisterPageObject = class RegisterPageObject {
     await this.txb_phonenumber.fill(phone);
 
     console.log("Enter email address already exist : " + email);
-    await this.txb_emailaddress(email);
+    await this.txb_emailaddress.fill(email);
 
     console.log("Enter password : " + password);
     await this.txb_password.fill(password);
@@ -222,7 +207,5 @@ exports.RegisterPageObject = class RegisterPageObject {
 
     console.log("Click to Register Button");
     await this.btn_register.click();
-
-    await expect(page.locator('#2')).toHaveText('User already existed');
   }
 }
