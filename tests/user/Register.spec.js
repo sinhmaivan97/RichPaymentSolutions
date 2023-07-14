@@ -1,6 +1,4 @@
 const { test, expect } = require('@playwright/test');
-const { faker } = require('@faker-js/faker');
-const { CommonUtils } = require('../../utils/CommonUtils');
 const { POM_Management } = require('../../pageObjects/POM_Management');
 
 const correct_infor = JSON.parse(JSON.stringify(require('../../data/correct_infor.json')));
