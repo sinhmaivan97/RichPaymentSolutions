@@ -1,5 +1,6 @@
-const { RegisterPageObject } = require('../pageObjects/userPageObject/RegisterPageObject');
-const { LoginPageObject } = require('../pageObjects/userPageObject/LoginPageObject');
+import { RegisterPageObject } from '../pageObjects/userPageObject/RegisterPageObject';
+import { LoginPageObject } from '../pageObjects/userPageObject/LoginPageObject';
+import { CheckoutPageObject } from '../pageObjects/checkoutPageObject/CheckoutPageObject';
 
 exports.POM_Management = class POM_Management {
 
@@ -7,6 +8,7 @@ exports.POM_Management = class POM_Management {
     this.page = page;
     this.registerPageObject = new RegisterPageObject(this.page);
     this.loginPageObject = new LoginPageObject(this.page);
+    this.checkoutPageObject = new CheckoutPageObject(this.page);
   }
 
   getRegisterPage() {
@@ -15,5 +17,9 @@ exports.POM_Management = class POM_Management {
 
   getLoginPage() {
     return this.loginPageObject;
+  }
+
+  getCheckoutPage() {
+    return this.checkoutPageObject;
   }
 }

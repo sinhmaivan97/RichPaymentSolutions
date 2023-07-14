@@ -1,0 +1,26 @@
+const { expect } = require('@playwright/test');
+
+exports.CheckoutPageObject = class CheckoutPageObject {
+    constructor(page) {
+        this.page = page;
+        this.txb_username = page.locator("//div[@data-test-id='input-username']//following-sibling::div//input");
+        this.txb_password = page.locator("//div[@data-test-id='input-password']//following-sibling::div//input");
+        this.btn_register = page.locator("//button[contains(text(),'Login')]");
+    }
+
+    async gotoCheckoutPage(username, password) {
+        const applicationURL = "https://business-settings.stage.devrpay.com/checkout";
+
+        console.log("Go to applications : " + applicationURL);
+        await this.page.goto(applicationURL);
+
+        console.log("Enter user name : " + username);
+        await this.txb_username.fill(username);
+
+        console.log("Enter password : " + password);
+        await this.txb_password.fill(password);
+
+        console.log("Click to register button");
+        await this.btn_register.click();
+    }
+}

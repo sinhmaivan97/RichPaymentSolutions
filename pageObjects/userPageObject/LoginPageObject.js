@@ -1,4 +1,4 @@
-import { expect } from "@playwright/test";
+const { expect } = require('@playwright/test');
 
 exports.LoginPageObject = class LoginPageObject {
     constructor(page) {
