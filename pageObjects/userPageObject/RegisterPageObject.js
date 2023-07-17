@@ -16,7 +16,7 @@ exports.RegisterPageObject = class RegisterPageObject {
   }
 
   async gotoApplication() {
-    const applicationURL = "https://business-settings.stage.devrpay.com/checkout";
+    const applicationURL = "https://landing.getrichpos.com/login";
 
     console.log('Go to application: ' + applicationURL);
     await this.page.goto(applicationURL);

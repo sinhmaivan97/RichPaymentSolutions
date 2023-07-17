@@ -9,7 +9,7 @@ exports.LoginPageObject = class LoginPageObject {
     }
 
     async gotoApplication() {
-        const applicationURL = "https://business-settings.stage.devrpay.com/checkout";
+        const applicationURL = "https://landing.getrichpos.com/login";
 
         console.log("Go to applications : " + applicationURL);
         await this.page.goto(applicationURL);

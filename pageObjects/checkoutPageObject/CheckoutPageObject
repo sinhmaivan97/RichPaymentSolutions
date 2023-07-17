@@ -9,7 +9,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
     }
 
     async gotoCheckoutPage(username, password) {
-        const applicationURL = "https://business-settings.stage.devrpay.com/checkout";
+        const applicationURL = "https://app.getrichpos.com/checkout";
 
         console.log("Go to applications : " + applicationURL);
         await this.page.goto(applicationURL);
@@ -22,5 +22,9 @@ exports.CheckoutPageObject = class CheckoutPageObject {
 
         console.log("Click to register button");
         await this.btn_register.click();
+    }
+
+    async TC01_() {
+
     }
 }
