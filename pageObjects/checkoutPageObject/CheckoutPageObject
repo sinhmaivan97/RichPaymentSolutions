@@ -6,6 +6,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         this.txb_username = page.locator("//div[@data-test-id='input-username']//following-sibling::div//input");
         this.txb_password = page.locator("//div[@data-test-id='input-password']//following-sibling::div//input");
         this.btn_register = page.locator("//button[contains(text(),'Login')]");
+        this.btn_staff= page.locator("//div[@data-test-id='staff-card']");
     }
 
     async gotoCheckoutPage(username, password) {
@@ -24,7 +25,4 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_register.click();
     }
 
-    async TC01_() {
-
-    }
 }

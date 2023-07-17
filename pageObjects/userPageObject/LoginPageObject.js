@@ -8,7 +8,7 @@ exports.LoginPageObject = class LoginPageObject {
         this.btn_register = page.locator("//button[contains(text(),'Login')]");
     }
 
-    async gotoApplication() {
+    async gotoLoginPage() {
         const applicationURL = "https://landing.getrichpos.com/login";
 
         console.log("Go to applications : " + applicationURL);

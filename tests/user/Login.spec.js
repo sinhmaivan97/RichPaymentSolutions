@@ -15,7 +15,7 @@ const password_incorrect = incorrect_infor.password;
 test('Login page', async ({ page }) => {
     const pom_manager = new POM_Management(page);
     const loginPage = pom_manager.getLoginPage();
-    await loginPage.gotoApplication();
+    await loginPage.gotoLoginPage();
 
     /* error messeage of login screen */
     const text_user = page.locator("//div[@data-test-id='input-username']//following-sibling::p");
