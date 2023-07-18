@@ -4,4 +4,5 @@ const { POM_Management } = require('../../pageObjects/POM_Management');
 test('Transaction Page', async ({ page }) => {
     const pom_manager = new POM_Management(page);
     const transactionsPage = pom_manager.getTransactionsPage();
+    await transactionsPage.gotoTransactionsPage("Tester", "a123456789");
 })
