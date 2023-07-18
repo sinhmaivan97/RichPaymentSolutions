@@ -13,11 +13,11 @@ test('Pay in cash', async ({ page }) => {
     // await expect(message_error).toBeVisible();
 
     /* TC01 - Checkout when more than staff, more than service and pay in cash*/
-    // await checkoutPage.TC01();
+    await checkoutPage.TC01();
 
     /* TC02 - Checkout when a staff, more than one service, discount and pay in cash*/
-    // await checkoutPage.TC02();
+    await checkoutPage.TC02();
 
     /* TC03 - Checkout when more than staff, more than service, discount and pay the cash*/
-    // await checkoutPage.TC03();
+    await checkoutPage.TC03();
 });

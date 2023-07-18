@@ -13,8 +13,8 @@ test('Pay in giftcard', async ({ page }) => {
     // await expect(message_error).toBeVisible();
 
     /* Checkout when more than one staff, more than one service and pay in gift card */
-    // await checkoutPage.TC07();
+    await checkoutPage.TC07();
 
     /* Checkout when more than one staff, more than one service, discount and pay in gift card */
-    // await checkoutPage.TC08();
+    await checkoutPage.TC08();
 });

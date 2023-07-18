@@ -13,11 +13,11 @@ test('Pay in credit', async ({ page }) => {
     // await expect(message_error).toBeVisible();
 
     /* TC04 - Checkout when more than staff, more than one service and pay in credit */
-    // await checkoutPage.TC04();
+    await checkoutPage.TC04();
 
     /* TC05 - Checkout when a staff, more than one service, discount and pay in credit */
-    // await checkoutPage.TC05();
+    await checkoutPage.TC05();
 
     /* TC06 - Checkout when more than staff, more than one service,discount and pay in credit */
-    // await checkoutPage.TC06();
+    await checkoutPage.TC06();
 });
