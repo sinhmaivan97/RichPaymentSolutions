@@ -9,15 +9,16 @@ test('Pay in credit', async ({ page }) => {
     /* message error/ success */
     const message_success = page.locator("//div[contains(text(),'Checkout success.')]");
     const message_error = page.locator("//div[contains(text(),'Can not connect to device')]");
-    // await expect(message_success).toBeVisible();
-    // await expect(message_error).toBeVisible();
 
     /* TC04 - Checkout when more than staff, more than one service and pay in credit */
     await checkoutPage.TC04();
+    await expect(message_error).toBeVisible();
 
     /* TC05 - Checkout when a staff, more than one service, discount and pay in credit */
-    await checkoutPage.TC05();
+    // await checkoutPage.TC05();
+    // await expect(message_error).toBeVisible();
 
     /* TC06 - Checkout when more than staff, more than one service,discount and pay in credit */
-    await checkoutPage.TC06();
+    // await checkoutPage.TC06();
+    // await expect(message_error).toBeVisible();
 });

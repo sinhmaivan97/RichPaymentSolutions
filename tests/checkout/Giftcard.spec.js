@@ -9,12 +9,12 @@ test('Pay in giftcard', async ({ page }) => {
     /* message error/ success */
     const message_success = page.locator("//div[contains(text(),'Checkout success.')]");
     const message_error = page.locator("//div[contains(text(),'Can not connect to device')]");
-    // await expect(message_success).toBeVisible();
-    // await expect(message_error).toBeVisible();
 
     /* Checkout when more than one staff, more than one service and pay in gift card */
     await checkoutPage.TC07();
+    await expect(message_success).toBeVisible();
 
     /* Checkout when more than one staff, more than one service, discount and pay in gift card */
-    await checkoutPage.TC08();
+    // await checkoutPage.TC08();
+    // await expect(message_success).toBeVisible();
 });

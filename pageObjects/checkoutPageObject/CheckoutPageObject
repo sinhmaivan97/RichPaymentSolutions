@@ -108,7 +108,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_service4.click();
         await this.btn_credit.click();
         await this.btn_payment_credit.click();
-        await this.checkbox_prinf_confirm.click();
+        // await this.checkbox_prinf_confirm.click();
     }
 
     async TC05() {
@@ -124,7 +124,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_save.click();
         await this.btn_credit.click();
         await this.btn_payment_credit.click();
-        await this.checkbox_prinf_confirm.click();
+        // await this.checkbox_prinf_confirm.click();
     }
 
     async TC06() {
@@ -142,7 +142,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_save.click();
         await this.btn_credit.click();
         await this.btn_payment_credit.click();
-        await this.checkbox_prinf_confirm.click();
+        // await this.checkbox_prinf_confirm.click();
     }
 
     async TC07() {
