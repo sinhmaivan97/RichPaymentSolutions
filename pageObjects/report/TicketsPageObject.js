@@ -15,7 +15,7 @@ exports.TicketsPageObject = class TicketsPageObject {
     }
 
     async gotoTicketPage(username, password) {
-        const applicationURL = "https://landing.getrichpos.com/login";
+        const applicationURL = "https://landing.stage.devrpay.com/login";
 
         console.log("Go to applications : " + applicationURL);
         await this.page.goto(applicationURL);
