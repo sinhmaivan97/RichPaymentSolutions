@@ -3,8 +3,10 @@ const { expect } = require('@playwright/test');
 exports.LoginPageObject = class LoginPageObject {
     constructor(page) {
         this.page = page;
+
         this.txb_username = page.locator("//div[@data-test-id='input-username']//following-sibling::div//input");
         this.txb_password = page.locator("//div[@data-test-id='input-password']//following-sibling::div//input");
+        
         this.btn_register = page.locator("//button[contains(text(),'Login')]");
     }
 

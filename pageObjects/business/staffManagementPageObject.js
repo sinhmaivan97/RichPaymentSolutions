@@ -3,15 +3,18 @@ const { expect } = require('@playwright/test');
 exports.StaffManagementPageObject = class StaffManagementPageObject {
     constructor(page) {
         this.page = page;
+
         this.txb_username = page.locator("//div[@data-test-id='input-username']//following-sibling::div//input");
         this.txb_password = page.locator("//div[@data-test-id='input-password']//following-sibling::div//input");
+
         this.btn_register = page.locator("//button[contains(text(),'Login')]");
         this.btn_business = page.getByRole('link', { name: 'Business Settings Business Settings' });
+        this.btn_staff_manager = page.getByText('Staff Management');
+
         this.input_1 = page.getByLabel('Number 1');
         this.input_2 = page.getByLabel('Number 2');
         this.input_3 = page.getByLabel('Number 3');
         this.input_4 = page.getByLabel('Number 4');
-        this.btn_staff_manager = page.getByText('Staff Management');
     }
 
     async gotoStaffPage(username, password) {

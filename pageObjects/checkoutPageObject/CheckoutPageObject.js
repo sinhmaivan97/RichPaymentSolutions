@@ -59,6 +59,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
     }
 
     async enterPasscode() {
+        console.log("Enter pass code ");
         await this.input_1.fill('R');
         await this.input_2.fill('!');
         await this.input_3.fill('C');
@@ -66,12 +67,14 @@ exports.CheckoutPageObject = class CheckoutPageObject {
     }
 
     async staffandservice01() {
+        console.log("Choose staff 1 and select services for it");
         await this.btn_staff1.click();
         await this.btn_service1.click();
         await this.btn_service2.click();
     }
 
     async staffandservice02() {
+        console.log("Choose staff 2 and select services for it");
         await this.btn_staff2.click();
         await this.btn_service3.click();
         await this.btn_service4.click();

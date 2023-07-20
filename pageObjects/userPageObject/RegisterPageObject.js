@@ -4,15 +4,16 @@ exports.RegisterPageObject = class RegisterPageObject {
 
   constructor(page) {
     this.page = page;
-    /* textbox in register screen */
+
     this.btn_signup = page.locator("//p[contains(text(), 'Sign up')]");
+    this.btn_register = page.locator("//button[contains(text(), 'Register')]");
+
     this.txb_username = page.locator("//div[@data-test-id='input-username']//following-sibling::div//input");
     this.txb_businessname = page.locator("//div[@data-test-id='input-bussiness-name']//following-sibling::div//input");
     this.txb_phonenumber = page.locator("//div[@data-test-id='input-bussiness-phone']//following-sibling::div//input");
     this.txb_emailaddress = page.locator("//div[@data-test-id='input-email']//following-sibling::div//input");
     this.txb_password = page.locator("//div[@data-test-id='input-password']//following-sibling::div//input");
     this.txb_repeatpass = page.locator("//div[@data-test-id='input-confirm']//following-sibling::div//input");
-    this.btn_register = page.locator("//button[contains(text(), 'Register')]");
   }
 
   async gotoApplication() {
