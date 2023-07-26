@@ -1,6 +1,5 @@
 const { test, expect } = require('@playwright/test');
 const { POM_Management } = require('../../pageObjects/POM_Management');
-const { CommonUtils } = require('../../utils/CommonUtils');
 
 test.describe('all register cases', () => {
 	let page, pom_manager, registerPage, correct, incorrect;
@@ -80,10 +79,6 @@ test.describe('all register cases', () => {
 		await registerPage.clickSignupBtn();
 		await registerPage.TC08_EmailAlreadyExist(correct.username, correct.business_name, correct.phone_number, correct.email_address, correct.password, correct.confirm_password);
 		await expect(already_exist_account_message).toHaveText('User already existed');
-	});
-
-	test.afterEach(async () => {
-		await new CommonUtils().waitForSomeTime(1);
 	});
 
 	test.afterAll(async () => {

@@ -1,6 +1,5 @@
 const { expect, test } = require('@playwright/test');
 const { POM_Management } = require('../../pageObjects/POM_Management');
-const { CommonUtils } = require('../../utils/CommonUtils');
 
 test.describe('all pay in cash cases', () => {
     let page, pom_manager, checkoutPage, message_success, account;
@@ -32,10 +31,6 @@ test.describe('all pay in cash cases', () => {
         /* Description TC03 - Checkout when more than staff, more than service, discount and pay the cash*/
         await checkoutPage.TC03();
         await expect(message_success).toHaveText('Checkout success.');
-    });
-
-    test.afterEach(async () => {
-        await new CommonUtils().waitForSomeTime(1);
     });
 
     test.afterAll(async () => {

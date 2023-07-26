@@ -1,6 +1,5 @@
 const { test, expect } = require('@playwright/test');
 const { POM_Management } = require('../../pageObjects/POM_Management');
-const { CommonUtils } = require('../../utils/CommonUtils');
 
 test.describe('all login cases', () => {
     let page, pom_manager, loginPage, correct, incorrect;
@@ -57,10 +56,6 @@ test.describe('all login cases', () => {
         /* Description TC06 - Check validation when user corectly input all txb */
         await loginPage.TC06_AccountCorrect(correct.username, correct.password);
         await expect(btn_checkin).toBeVisible();
-    });
-
-    test.afterEach(async () => {
-        await new CommonUtils().waitForSomeTime(1);
     });
 
     test.afterAll(async () => {
