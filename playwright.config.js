@@ -10,6 +10,9 @@ const { defineConfig, devices } = require('@playwright/test');
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
+
+export const storageStatePath = 'storage-state/storageState.json';
+
 module.exports = defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -23,6 +26,12 @@ module.exports = defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  timeout: 60000,
+
+  expect: {
+    timeout: 10000,
+  },
+
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://landing.getrichpos.com/login',
@@ -34,7 +43,7 @@ module.exports = defineConfig({
     screenshot: "only-on-failure",
 
     //Maximum time each action such as 'click()' can takeDefault to 0 (no limit)
-    actionTimeout: 0,
+    actionTimeout: 20000,
 
     // Name of the browser that runs tests. For example `chromium`, `firefox`, `webkit`.
     browserName: 'chromium',
@@ -43,8 +52,17 @@ module.exports = defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'setup',
+      testMatch: 'login.setup.ts',
+    },
+    
+    {
+      name: 'Chrome',
+      use: {
+        browserName: 'chromium',
+        storageState: storageStatePath,
+      },
+      dependencies: ['setup'],
     },
 
     {
