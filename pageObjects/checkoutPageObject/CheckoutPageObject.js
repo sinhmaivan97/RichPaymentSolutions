@@ -7,6 +7,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         this.txb_username = page.locator("//div[@data-test-id='input-username']//following-sibling::div//input");
         this.txb_password = page.locator("//div[@data-test-id='input-password']//following-sibling::div//input");
         this.txb_enter_giftcard = page.locator("//input[@id='outlined-basic']");
+        this.input_number_card = page.locator("//input[@id='outlined-basic']");
 
         this.btn_register = page.locator("//button[contains(text(),'Login')]");
         this.btn_add_staff = page.locator("//button[@data-test-id='btn-add-staff']");
@@ -32,6 +33,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         this.checkbox_prinf_confirm = page.locator("//label[@data-test-id='nonet-option']//span//input");
 
         this.server = JSON.parse(JSON.stringify(require('../../data/server.json')));
+        this.account = JSON.parse(JSON.stringify(require('../../data/account_test.json')));
     }
 
     /* common function */
@@ -115,6 +117,9 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.staffandservice02();
         await this.btn_external_credit_card.click();
         await this.enterPasscode();
+        await this.input_number_card.fill(this.account.EXTERNAL_CARD_ID);
+        await this.btn_payment_cash.click();
+        await this.checkbox_prinf_confirm.click();
     }
 
     async TC05() {
@@ -125,6 +130,8 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_save.click();
         await this.btn_external_credit_card.click();
         await this.enterPasscode();
+        await this.input_number_card.fill(this.account.EXTERNAL_CARD_ID);
+        await this.btn_payment_cash.click();
     }
 
     async TC06() {
@@ -137,6 +144,9 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_save.click();
         await this.btn_external_credit_card.click();
         await this.enterPasscode();
+        await this.input_number_card.fill(this.account.EXTERNAL_CARD_ID);
+        await this.btn_payment_cash.click();
+        await this.checkbox_prinf_confirm.click();
     }
 
     async TC07() {
@@ -145,7 +155,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_add_staff.click();
         await this.staffandservice02();
         await this.btn_giftcard.click();
-        await this.txb_enter_giftcard.fill("929292");
+        await this.txb_enter_giftcard.fill(this.account.GIFT_CARD_ID);
         await this.btn_payment_giftcard.click();
         await this.btn_done_giftcard.click();
     }
@@ -159,7 +169,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_discount_percent.click();
         await this.btn_save.click();
         await this.btn_giftcard.click();
-        await this.txb_enter_giftcard.fill("929292");
+        await this.txb_enter_giftcard.fill(this.account.GIFT_CARD_ID);
         await this.btn_payment_giftcard.click();
         await this.btn_done_giftcard.click();
     }

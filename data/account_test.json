@@ -1,4 +1,6 @@
 {
     "username": "Tester",
-    "password": "a123456789"
+    "password": "a123456789",
+    "GIFT_CARD_ID": "010199",
+    "EXTERNAL_CARD_ID": "6868"
 }
