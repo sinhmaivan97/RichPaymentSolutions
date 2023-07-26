@@ -6,26 +6,23 @@ exports.LoginPageObject = class LoginPageObject {
 
         this.txb_username = page.locator("//div[@data-test-id='input-username']//following-sibling::div//input");
         this.txb_password = page.locator("//div[@data-test-id='input-password']//following-sibling::div//input");
-        
         this.btn_register = page.locator("//button[contains(text(),'Login')]");
+
+        this.server = JSON.parse(JSON.stringify(require('../../data/server.json')));
     }
 
     async gotoLoginPage() {
-        const applicationURL = "https://landing.stage.devrpay.com/login";
-
-        console.log("Go to applications : " + applicationURL);
-        await this.page.goto(applicationURL);
+        console.log("Go to applications");
+        await this.page.goto(this.server.STAG);
     }
 
     async TC01_EmptyData() {
-        console.log("****************************************************");
-        console.log("Check validation when user does'nt enter all textbox");
+        console.log("1 - Check validation when user does'nt enter all textbox");
         await this.btn_register.click();
     }
 
     async TC02_BlankUserName(password) {
-        console.log("****************************************************");
-        console.log("Check validation when user does'nt username")
+        console.log("2 - Check validation when user does'nt username")
 
         console.log("Enter password: " + password);
         await this.txb_password.fill(password);
@@ -35,8 +32,7 @@ exports.LoginPageObject = class LoginPageObject {
     }
 
     async TC03_BlankPassword(username) {
-        console.log("****************************************************");
-        console.log("Check validation when user does'nt password")
+        console.log("3 - Check validation when user does'nt password")
 
         console.log("Enter user name : " + username);
         await this.txb_username.fill(username);
@@ -47,8 +43,7 @@ exports.LoginPageObject = class LoginPageObject {
     }
 
     async TC04_PasswordLeast8Character(username, password) {
-        console.log("****************************************************");
-        console.log("Check validation when user enters a password of at least 8 characters")
+        console.log("4 - Check validation when user enters a password of at least 8 characters")
 
         console.log("Enter user name : " + username);
         await this.txb_username.fill(username);
@@ -61,8 +56,7 @@ exports.LoginPageObject = class LoginPageObject {
     }
 
     async TC05_AccountDontExist(username, password) {
-        console.log("****************************************************");
-        console.log("Check validation when user logs in with an account that doesn't exist");
+        console.log("5 - Check validation when user logs in with an account that doesn't exist");
 
         console.log("Enter user name dont exist : " + username);
         await this.txb_username.fill(username);
@@ -75,8 +69,7 @@ exports.LoginPageObject = class LoginPageObject {
     }
 
     async TC06_AccountCorrect(username, password) {
-        console.log("****************************************************");
-        console.log("Check validation when user corectly input all txb");
+        console.log("6 - Check validation when user corectly input all txb");
 
         console.log("Enter user name : " + username);
         await this.txb_username.fill(username);

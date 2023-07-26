@@ -15,13 +15,13 @@ exports.StaffManagementPageObject = class StaffManagementPageObject {
         this.input_2 = page.getByLabel('Number 2');
         this.input_3 = page.getByLabel('Number 3');
         this.input_4 = page.getByLabel('Number 4');
+
+        this.server = JSON.parse(JSON.stringify(require('../../data/server.json')));
     }
 
     async gotoStaffPage(username, password) {
-        const applicationURL = "https://landing.stage.devrpay.com/login";
-
-        console.log("Go to applications : " + applicationURL);
-        await this.page.goto(applicationURL);
+        console.log("Go to applications");
+        await this.page.goto(this.server.STAG);
 
         console.log("Enter user name : " + username);
         await this.txb_username.fill(username);

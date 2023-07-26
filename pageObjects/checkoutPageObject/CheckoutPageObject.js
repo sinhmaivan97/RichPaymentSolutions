@@ -8,8 +8,6 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         this.txb_password = page.locator("//div[@data-test-id='input-password']//following-sibling::div//input");
         this.txb_enter_giftcard = page.locator("//input[@id='outlined-basic']");
 
-        this.checkbox_prinf_confirm = page.locator("//label[@data-test-id='nonet-option']//span//input");
-
         this.btn_register = page.locator("//button[contains(text(),'Login')]");
         this.btn_add_staff = page.locator("//button[@data-test-id='btn-add-staff']");
         this.btn_staff1 = page.locator("//p[contains(text(),'Staff_01')]");
@@ -31,19 +29,15 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         this.btn_payment_giftcard = page.locator("//button[contains(text(),'Payment')]");
         this.btn_done_giftcard = page.locator("//button[contains(text(),'Done')]");
 
-        this.input_1 = page.getByLabel('Number 1');
-        this.input_2 = page.getByLabel('Number 2');
-        this.input_3 = page.getByLabel('Number 3');
-        this.input_4 = page.getByLabel('Number 4');
+        this.checkbox_prinf_confirm = page.locator("//label[@data-test-id='nonet-option']//span//input");
+
+        this.server = JSON.parse(JSON.stringify(require('../../data/server.json')));
     }
 
     /* common function */
-
     async gotoCheckoutPage(username, password) {
-        const applicationURL = "https://landing.stage.devrpay.com/login";
-
-        console.log("Go to applications : " + applicationURL);
-        await this.page.goto(applicationURL);
+        console.log("Go to applications");
+        await this.page.goto(this.server.STAG);
 
         console.log("Enter user name : " + username);
         await this.txb_username.fill(username);
@@ -56,11 +50,11 @@ exports.CheckoutPageObject = class CheckoutPageObject {
     }
 
     async enterPasscode() {
-        console.log("Enter pass code ");
-        await this.input_1.fill('R');
-        await this.input_2.fill('!');
-        await this.input_3.fill('C');
-        await this.input_4.fill('H');
+        console.log("Enter pass code");
+        await this.page.getByLabel('Number 1').fill('R');
+        await this.page.getByLabel('Number 2').fill('!');
+        await this.page.getByLabel('Number 3').fill('C');
+        await this.page.getByLabel('Number 4').fill('H');
     }
 
     async staffandservice01() {
@@ -78,10 +72,8 @@ exports.CheckoutPageObject = class CheckoutPageObject {
     }
 
     /* test case function */
-
     async TC01() {
-        console.log("----------------------------------");
-        console.log("Checkout when more than staff, more than service and pay in cash");
+        console.log("1 - Checkout when more than staff, more than service and pay in cash");
         await this.staffandservice01();
         await this.btn_add_staff.click();
         await this.staffandservice02();
@@ -89,12 +81,10 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_quick_cash.click();
         await this.btn_payment_cash.click();
         await this.checkbox_prinf_confirm.click();
-        await this.btn_confirm.click();
     }
 
     async TC02(page) {
-        console.log("----------------------------------");
-        console.log("Checkout when a staff, more than one service, discount and pay in cash");
+        console.log("2 - Checkout when a staff, more than one service, discount and pay in cash");
         await this.staffandservice02();
         await this.btn_discount.click();
         await this.btn_discount_percent.click();
@@ -105,8 +95,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
     }
 
     async TC03() {
-        console.log("----------------------------------");
-        console.log("Checkout when more than staff, more than service, discount and pay the cash");
+        console.log("3 - Checkout when more than staff, more than service, discount and pay the cash");
         await this.staffandservice01();
         await this.btn_add_staff.click();
         await this.staffandservice02();
@@ -117,12 +106,10 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_quick_cash.click();
         await this.btn_payment_cash.click();
         await this.checkbox_prinf_confirm.click();
-        await this.btn_confirm.click();
     }
 
     async TC04() {
-        console.log("----------------------------------");
-        console.log("Checkout when more than staff, more than one service and pay in external credit Card");
+        console.log("4 - Checkout when more than staff, more than one service and pay in external credit Card");
         await this.staffandservice01();
         await this.btn_add_staff.click();
         await this.staffandservice02();
@@ -131,8 +118,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
     }
 
     async TC05() {
-        console.log("----------------------------------");
-        console.log("Checkout when a staff, more than one service, discount and pay in external credit Card");
+        console.log("5 - Checkout when a staff, more than one service, discount and pay in external credit Card");
         await this.staffandservice01();
         await this.btn_discount.click();
         await this.btn_discount_percent.click();
@@ -142,8 +128,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
     }
 
     async TC06() {
-        console.log("----------------------------------");
-        console.log("Checkout when more than staff, more than one service,discount and pay in external credit Card");
+        console.log("6 - Checkout when more than staff, more than one service,discount and pay in external credit Card");
         await this.staffandservice01();
         await this.btn_add_staff.click();
         await this.staffandservice02();
@@ -155,8 +140,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
     }
 
     async TC07() {
-        console.log("----------------------------------");
-        console.log("Checkout when more than one staff, more than one service and pay in gift card");
+        console.log("7 - Checkout when more than one staff, more than one service and pay in gift card");
         await this.staffandservice01();
         await this.btn_add_staff.click();
         await this.staffandservice02();
@@ -167,8 +151,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
     }
 
     async TC08() {
-        console.log("----------------------------------");
-        console.log("Checkout when more than one staff, more than one service, discount and pay in gift card");
+        console.log("8 - Checkout when more than one staff, more than one service, discount and pay in gift card");
         await this.staffandservice01();
         await this.btn_add_staff.click();
         await this.staffandservice02();

@@ -1,0 +1,5 @@
+{
+    "DEV": "https://business-settings.devrpay.com/checkout",
+    "STAG": "https://business-settings.stage.devrpay.com/checkout",
+    "PROD": "https://app.getrichpos.com/checkout"
+}

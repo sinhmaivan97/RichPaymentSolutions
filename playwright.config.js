@@ -1,19 +1,10 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
-
-/**
- * @see https://playwright.dev/docs/test-configuration
- */
-
-export const storageStatePath = 'storage-state/storageState.json';
+// export const storageStatePath = 'D:/RichPaymentSolutions/tests/LoginAuth.json';
 
 module.exports = defineConfig({
+  // globalSetup: 'D:/RichPaymentSolutions/tests/login.setup.js',
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -33,9 +24,6 @@ module.exports = defineConfig({
   },
 
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://landing.getrichpos.com/login',
-
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
 
@@ -47,20 +35,21 @@ module.exports = defineConfig({
 
     // Name of the browser that runs tests. For example `chromium`, `firefox`, `webkit`.
     browserName: 'chromium',
+    // storageStatePath: 'D:/RichPaymentSolutions/tests/LoginAuth.json'
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'setup',
-      testMatch: 'login.setup.ts',
+      testMatch: 'login.setup.js',
     },
-    
+
     {
       name: 'Chrome',
       use: {
         browserName: 'chromium',
-        storageState: storageStatePath,
+        // storageState: storageStatePath,
       },
       dependencies: ['setup'],
     },
@@ -74,32 +63,5 @@ module.exports = defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
-    // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
-    // },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
   ],
-
-  /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://127.0.0.1:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
 });
