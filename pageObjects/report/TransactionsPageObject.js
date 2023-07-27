@@ -11,22 +11,17 @@ exports.TransactionsPageObject = class TransactionsPageObject {
         this.btn_report = page.locator("//ul[@data-test-id='report-route']");
         this.btn_transactions = page.locator("//p[contains(text(),'Transactions')]");
 
-        this.input_1 = page.getByLabel('Number 1');
-        this.input_2 = page.getByLabel('Number 2');
-        this.input_3 = page.getByLabel('Number 3');
-        this.input_4 = page.getByLabel('Number 4');
-
         this.server = JSON.parse(JSON.stringify(require('../../data/server.json')));
     }
 
     /* common function */
 
     async enterPasscode() {
-        console.log("Enter pass code ");
-        await this.input_1.fill('R');
-        await this.input_2.fill('!');
-        await this.input_3.fill('C');
-        await this.input_4.fill('H');
+        console.log("Enter pass code : R!CH ");
+        await this.page.getByLabel('Number 1').fill('R');
+        await this.page.getByLabel('Number 2').fill('!');
+        await this.page.getByLabel('Number 3').fill('C');
+        await this.page.getByLabel('Number 4').fill('H');
     }
 
     async gotoTransactionsPage(username, password) {

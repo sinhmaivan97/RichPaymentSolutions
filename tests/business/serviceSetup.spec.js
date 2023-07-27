@@ -1,8 +1,23 @@
 const { expect, test } = require('@playwright/test');
 const { POM_Management } = require('../../pageObjects/POM_Management');
 
-test('Service page', async ({ page }) => {
-  const pom_manager = new POM_Management(page);
-  const servicePage = pom_manager.getServicePage();
-  await servicePage.gotoServicePage("Tester", "a123456789");
+test.describe('all service page cases', () => {
+  let page, pom_manager, servicePage, account;
+
+  test.beforeAll(async ({ browser }) => {
+    account = JSON.parse(JSON.stringify(require('../../data/account_test.json')));
+
+    page = await browser.newPage();
+    pom_manager = new POM_Management(page);
+    servicePage = pom_manager.getServicePage();
+    await servicePage.gotoServicePage(account.username, account.password);
+  });
+
+  test('TC_01', async ({ page }) => {
+
+  });
+
+  test.afterAll(async () => {
+    await page.close();
+  });
 });

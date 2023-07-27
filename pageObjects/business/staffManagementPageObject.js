@@ -11,12 +11,17 @@ exports.StaffManagementPageObject = class StaffManagementPageObject {
         this.btn_business = page.getByRole('link', { name: 'Business Settings Business Settings' });
         this.btn_staff_manager = page.getByText('Staff Management');
 
-        this.input_1 = page.getByLabel('Number 1');
-        this.input_2 = page.getByLabel('Number 2');
-        this.input_3 = page.getByLabel('Number 3');
-        this.input_4 = page.getByLabel('Number 4');
-
         this.server = JSON.parse(JSON.stringify(require('../../data/server.json')));
+    }
+
+    /* common function */
+
+    async enterPasscode() {
+        console.log("Enter pass code : R!CH ");
+        await this.page.getByLabel('Number 1').fill('R');
+        await this.page.getByLabel('Number 2').fill('!');
+        await this.page.getByLabel('Number 3').fill('C');
+        await this.page.getByLabel('Number 4').fill('H');
     }
 
     async gotoStaffPage(username, password) {
@@ -34,10 +39,7 @@ exports.StaffManagementPageObject = class StaffManagementPageObject {
 
         console.log("Click to business button and enter pass code");
         await this.btn_business.click();
-        await this.input_1.fill('R');
-        await this.input_2.fill('!');
-        await this.input_3.fill('C');
-        await this.input_4.fill('H');
+        await this.enterPasscode();
 
         await this.btn_staff_manager.click();
     }

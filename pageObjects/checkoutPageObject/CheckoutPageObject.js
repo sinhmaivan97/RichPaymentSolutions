@@ -52,7 +52,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
     }
 
     async enterPasscode() {
-        console.log("Enter pass code");
+        console.log("Enter pass code: R!CH");
         await this.page.getByLabel('Number 1').fill('R');
         await this.page.getByLabel('Number 2').fill('!');
         await this.page.getByLabel('Number 3').fill('C');
