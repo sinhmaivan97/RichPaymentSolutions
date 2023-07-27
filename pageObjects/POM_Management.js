@@ -7,6 +7,14 @@ import { PayrollPageObject } from '../pageObjects/report/PayrollPageObject';
 import { SalesReportPageObject } from '../pageObjects/report/SalesReportPageObject';
 import { TicketsPageObject } from '../pageObjects/report/TicketsPageObject';
 import { TransactionsPageObject } from '../pageObjects/report/TransactionsPageObject';
+import { AdminSettingPageObject } from '../pageObjects/business/AdminSettingPageObject';
+import { AppSettingPageObject } from '../pageObjects/business/AppSettingPageObject';
+import { BusinessDetailPageObject } from '../pageObjects/business/BusinessDetailPageObject';
+import { CheckoutSettingPageObject } from '../pageObjects/business/CheckoutSettingPageObject';
+import { CustomerSettingPageObject } from '../pageObjects/business/CustomerSettingPageObject';
+import { DisplaySettingPageObject } from '../pageObjects/business/DisplaySettingPageObject';
+import { GiftcardPageObject } from '../pageObjects/business/GiftcardPageObject';
+import { PaymentSettingPageObject } from '../pageObjects/business/PaymentSettingPageObject';
 
 exports.POM_Management = class POM_Management {
 
@@ -21,6 +29,14 @@ exports.POM_Management = class POM_Management {
     this.salesReportPageObject = new SalesReportPageObject(this.page);
     this.ticketsPageObject = new TicketsPageObject(this.page);
     this.transactionsPageObject = new TransactionsPageObject(this.page);
+    this.adminSettingPageObject = new AdminSettingPageObject(this.page);
+    this.appSettingPageObject = new AppSettingPageObject(this.page);
+    this.businessDetailPageObject = new BusinessDetailPageObject(this.page);
+    this.checkoutSettingPageObject = new CheckoutSettingPageObject(this.page);
+    this.customerSettingPageObject = new CustomerSettingPageObject(this.page);
+    this.displaySettingPageObject = new DisplaySettingPageObject(this.page);
+    this.giftcardPageObject = new GiftcardPageObject(this.page);
+    this.paymentSettingPageObject = new PaymentSettingPageObject(this.page);
   }
 
   getRegisterPage() {
@@ -57,5 +73,37 @@ exports.POM_Management = class POM_Management {
 
   getTransactionsPage() {
     return this.transactionsPageObject;
+  }
+
+  getAdminSettingPage() {
+    return this.adminSettingPageObject;
+  }
+
+  getAppSettingPage() {
+    return this.appSettingPageObject;
+  }
+
+  getBusinessDetailPage() {
+    return this.businessDetailPageObject;
+  }
+
+  getCheckoutSettingPage() {
+    return this.checkoutSettingPageObject;
+  }
+
+  getCustomerSettingPage() {
+    return this.customerSettingPageObject;
+  }
+
+  getDisplaySettingPage() {
+    return this.displaySettingPageObject;
+  }
+
+  getGiftcardPage() {
+    return this.giftcardPageObject;
+  }
+
+  getPaymentSettingPage() {
+    return this.paymentSettingPageObject;
   }
 }
