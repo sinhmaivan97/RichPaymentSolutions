@@ -20,7 +20,7 @@ exports.RegisterPageObject = class RegisterPageObject {
 
   async gotoApplication() {
     console.log('Go to application');
-    await this.page.goto(this.server.STAG);
+    await this.page.goto(this.server.DOMAIN);
 
     console.log("Click to Signup Button");
     await this.btn_signup.click();

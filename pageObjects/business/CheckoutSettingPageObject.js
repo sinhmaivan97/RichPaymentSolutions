@@ -26,7 +26,7 @@ exports.CheckoutSettingPageObject = class CheckoutSettingPageObject {
 
     async gotoCheckoutPage(username, password) {
         console.log("Go to applications");
-        await this.page.goto(this.server.STAG);
+        await this.page.goto(this.server.DOMAIN);
 
         console.log("Enter user name : " + username);
         await this.txb_username.fill(username);

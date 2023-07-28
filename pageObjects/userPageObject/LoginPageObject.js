@@ -13,7 +13,7 @@ exports.LoginPageObject = class LoginPageObject {
 
     async gotoLoginPage() {
         console.log("Go to applications");
-        await this.page.goto(this.server.STAG);
+        await this.page.goto(this.server.DOMAIN);
     }
 
     async TC01_EmptyData() {

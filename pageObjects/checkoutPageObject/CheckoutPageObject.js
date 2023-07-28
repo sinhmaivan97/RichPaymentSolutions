@@ -39,7 +39,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
     /* common function */
     async gotoCheckoutPage(username, password) {
         console.log("Go to applications");
-        await this.page.goto(this.server.STAG);
+        await this.page.goto(this.server.DOMAIN);
 
         console.log("Enter user name : " + username);
         await this.txb_username.fill(username);
@@ -107,7 +107,6 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_cash.click();
         await this.btn_quick_cash.click();
         await this.btn_payment_cash.click();
-        await this.checkbox_prinf_confirm.click();
     }
 
     async TC04() {
