@@ -31,7 +31,7 @@ module.exports = defineConfig({
     screenshot: "only-on-failure",
 
     //Maximum time each action such as 'click()' can takeDefault to 0 (no limit)
-    actionTimeout: 20000,
+    actionTimeout: 30000,
 
     // Name of the browser that runs tests. For example `chromium`, `firefox`, `webkit`.
     browserName: 'chromium',

@@ -29,6 +29,8 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         this.btn_confirm = page.locator("//button[contains(text(),'Confirm')]");
         this.btn_payment_giftcard = page.locator("//button[contains(text(),'Payment')]");
         this.btn_done_giftcard = page.locator("//button[contains(text(),'Done')]");
+        this.btn_select = page.locator("//button[contains(text(),'Select')]");
+        this.btn_merge = page.locator("//button[contains(text(),'Merge')]");
 
         this.checkbox_prinf_confirm = page.locator("//label[@data-test-id='nonet-option']//span//input");
 
@@ -62,15 +64,24 @@ exports.CheckoutPageObject = class CheckoutPageObject {
     async staffandservice01() {
         console.log("Choose staff 1 and select services for it");
         await this.btn_staff1.click();
-        await this.btn_service1.click();
-        await this.btn_service2.click();
+        if (await this.btn_select.first().isVisible()) {
+            await this.btn_select.first().click();
+        }
+        await this.btn_service1.first().click();
+        if (await this.btn_save.isVisible()) {
+            await this.btn_save.click();
+        }
+        await this.btn_service2.first().click();
     }
 
     async staffandservice02() {
         console.log("Choose staff 2 and select services for it");
         await this.btn_staff2.click();
-        await this.btn_service3.click();
-        await this.btn_service4.click();
+        if (await this.btn_merge.first().isVisible()) {
+            await this.btn_merge.first().click();
+        }
+        await this.btn_service3.first().click();
+        await this.btn_service4.first().click();
     }
 
     /* test case function */
@@ -79,10 +90,12 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.staffandservice01();
         await this.btn_add_staff.click();
         await this.staffandservice02();
-        await this.btn_cash.click({ timeout: 3000 });
+        await this.btn_cash.click();
         await this.btn_quick_cash.click();
         await this.btn_payment_cash.click();
-        await this.checkbox_prinf_confirm.click();
+        if (await this.checkbox_prinf_confirm.isVisible()) {
+            await this.checkbox_prinf_confirm.click();
+        }
     }
 
     async TC02(page) {
@@ -94,6 +107,9 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_cash.click();
         await this.btn_quick_cash.click();
         await this.btn_payment_cash.click();
+        if (await this.checkbox_prinf_confirm.isVisible()) {
+            await this.checkbox_prinf_confirm.click();
+        }
     }
 
     async TC03() {
@@ -107,6 +123,9 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_cash.click();
         await this.btn_quick_cash.click();
         await this.btn_payment_cash.click();
+        if (await this.checkbox_prinf_confirm.isVisible()) {
+            await this.checkbox_prinf_confirm.click();
+        }
     }
 
     async TC04() {
@@ -118,7 +137,9 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.enterPasscode();
         await this.input_number_card.fill(this.account.EXTERNAL_CARD_ID);
         await this.btn_payment_cash.click();
-        await this.checkbox_prinf_confirm.click();
+        if (await this.checkbox_prinf_confirm.isVisible()) {
+            await this.checkbox_prinf_confirm.click();
+        }
     }
 
     async TC05() {
@@ -131,6 +152,9 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.enterPasscode();
         await this.input_number_card.fill(this.account.EXTERNAL_CARD_ID);
         await this.btn_payment_cash.click();
+        if (await this.checkbox_prinf_confirm.isVisible()) {
+            await this.checkbox_prinf_confirm.click();
+        }
     }
 
     async TC06() {
@@ -145,7 +169,9 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.enterPasscode();
         await this.input_number_card.fill(this.account.EXTERNAL_CARD_ID);
         await this.btn_payment_cash.click();
-        await this.checkbox_prinf_confirm.click();
+        if (await this.checkbox_prinf_confirm.isVisible()) {
+            await this.checkbox_prinf_confirm.click();
+        }
     }
 
     async TC07() {

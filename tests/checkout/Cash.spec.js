@@ -2,7 +2,7 @@ const { expect, test } = require('@playwright/test');
 const { POM_Management } = require('../../pageObjects/POM_Management');
 
 test.describe('all pay in cash cases', () => {
-    let page, pom_manager, checkoutPage, message_success, account;
+    let page, pom_manager, checkoutPage, message_success, account, btn_select;
 
     test.beforeAll(async ({ browser }) => {
         account = JSON.parse(JSON.stringify(require('../../data/account_test.json')));
