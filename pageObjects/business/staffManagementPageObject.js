@@ -10,6 +10,17 @@ exports.StaffManagementPageObject = class StaffManagementPageObject {
         this.btn_register = page.locator("//button[contains(text(),'Login')]");
         this.btn_business = page.getByRole('link', { name: 'Business Settings Business Settings' });
         this.btn_staff_manager = page.getByText('Staff Management');
+        this.btn_staff_profile = page.locator("//p[contains(text(),'Staff’s profile')]");
+        this.btn_add_staff = page.locator("//button[contains(text(),'Add')]");
+        this.btn_save_staff = page.locator("//button[@type='submit']");
+        this.btn_name = page.locator("//div//label[contains(text(),'Name (*)')]/following-sibling::div//input");
+        this.btn_phone_number = page.locator("//div//label[contains(text(),'Phone Number')]/following-sibling::div//input");
+        this.btn_email = page.locator("//div//label[contains(text(),'Email')]/following-sibling::div//input");
+        this.passcode = page.locator("//div//label[contains(text(),'Passcode')]/following-sibling::div//input");
+        this.btn_staff = page.getByText('Account demo');
+        this.btn_update = page.getByText('Update');
+        this.icon_delete = page.getByLabel('delete');
+        this.btn_delete = page.locator("//button[contains(text(),'Delete')]");
 
         this.server = JSON.parse(JSON.stringify(require('../../data/server.json')));
     }
@@ -42,5 +53,109 @@ exports.StaffManagementPageObject = class StaffManagementPageObject {
         await this.enterPasscode();
 
         await this.btn_staff_manager.click();
+        await this.btn_staff_profile.click();
+    }
+
+    /* test case function */
+
+    async TC_01() {
+        console.log("Verify addition new when user does not enter all data");
+
+        console.log("Click to btn add staff");
+        await this.btn_add_staff.click();
+
+        console.log("Click to btn save staff");
+        await this.btn_save_staff.click();
+    }
+
+    async TC_02(name, phonenumber, email) {
+        console.log("Verify addition new when user enters all incorrect data");
+
+        console.log("Enter incorrect name : " + name);
+        await this.btn_name.fill(name);
+
+        console.log("Enter incorrect phone number : " + phonenumber);
+        await this.btn_phone_number.fill(phonenumber);
+
+        console.log("Enter incorrect email :" + email);
+        await this.btn_email.fill(email);
+
+        console.log("Click btn save");
+        await this.btn_save_staff.click();
+    }
+
+    async TC_03(name, phonenumber, email) {
+        console.log("Verify addition new when user enters all correct data");
+
+        console.log("Enter correct name : " + name);
+        await this.btn_name.fill(name);
+
+        console.log("Enter correct phone number : " + phonenumber);
+        await this.btn_phone_number.fill(phonenumber);
+
+        console.log("Enter correct email :" + email);
+        await this.btn_email.fill(email);
+
+        console.log("Click btn save");
+        await this.btn_save_staff.click();
+    }
+
+    async TC_04(name, phonenumber, email) {
+        console.log("Verify updates when user deletes all data");
+
+        console.log("Click staff button from the left menu")
+        await this.btn_staff.click();
+
+        console.log("Enter correct name : " + name);
+        await this.btn_name.fill(name);
+
+        console.log("Enter correct phone number : " + phonenumber);
+        await this.btn_phone_number.fill(phonenumber);
+
+        console.log("Enter correct email :" + email);
+        await this.btn_email.fill(email);
+
+        console.log("Click btn update");
+        await this.btn_update.click();
+    }
+
+    async TC_05(name, phonenumber, email) {
+        console.log("Verify updates when user enters all incorrect data");
+
+        console.log("Enter incorrect name : " + name);
+        await this.btn_name.fill(name);
+
+        console.log("Enter incorrect phone number : " + phonenumber);
+        await this.btn_phone_number.fill(phonenumber);
+
+        console.log("Enter incorrect email :" + email);
+        await this.btn_email.fill(email);
+
+        console.log("Click btn update");
+        await this.btn_update.click();
+    }
+
+    async TC_06(phonenumber, email) {
+        console.log("Verify updates when user enters all correct data");
+
+        console.log("Enter correct phone number : " + phonenumber);
+        await this.btn_phone_number.fill(phonenumber);
+
+        console.log("Enter correct email :" + email);
+        await this.btn_email.fill(email);
+
+        console.log("Click btn update");
+        await this.btn_update.click();
+    }
+
+    async TC_07() {
+        console.log("Verify updates when user updated commission role");
+    }
+
+    async TC_08() {
+        console.log("Verify data when user deletes staff");
+
+        await this.icon_delete.nth(2).click();
+        await this.btn_delete.click();
     }
 }

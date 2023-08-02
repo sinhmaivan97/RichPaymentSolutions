@@ -100,7 +100,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
 
     async TC02(page) {
         console.log("2 - Checkout when a staff, more than one service, discount and pay in cash");
-        await this.staffandservice02();
+        await this.staffandservice01();
         await this.btn_discount.click();
         await this.btn_discount_percent.click();
         await this.btn_save.click();

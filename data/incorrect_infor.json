@@ -4,5 +4,6 @@
     "phone_number": "123456",
     "email_address": "RichPayment@gmail*com",
     "password": "123456",
-    "confirm_password": "123456"
+    "confirm_password": "123456",
+    "passcode": "123"
 }
