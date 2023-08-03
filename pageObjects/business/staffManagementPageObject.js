@@ -21,6 +21,9 @@ exports.StaffManagementPageObject = class StaffManagementPageObject {
         this.btn_update = page.getByText('Update');
         this.icon_delete = page.getByLabel('delete');
         this.btn_delete = page.locator("//button[contains(text(),'Delete')]");
+        this.btn_commission = page.locator("//button[contains(text(),'Commission')]");
+        this.btn_4060 = page.locator("//div[contains(text(),'40-60')]");
+        this.btn_5050 = page.locator("//div[contains(text(),'50-50')]");
 
         this.server = JSON.parse(JSON.stringify(require('../../data/server.json')));
     }
@@ -104,7 +107,7 @@ exports.StaffManagementPageObject = class StaffManagementPageObject {
         console.log("Verify updates when user deletes all data");
 
         console.log("Click staff button from the left menu")
-        await this.btn_staff.click();
+        await this.btn_staff.first().click();
 
         console.log("Enter correct name : " + name);
         await this.btn_name.fill(name);
@@ -135,8 +138,11 @@ exports.StaffManagementPageObject = class StaffManagementPageObject {
         await this.btn_update.click();
     }
 
-    async TC_06(phonenumber, email) {
+    async TC_06(name, phonenumber, email) {
         console.log("Verify updates when user enters all correct data");
+
+        console.log("Enter incorrect name : " + name);
+        await this.btn_name.fill(name);
 
         console.log("Enter correct phone number : " + phonenumber);
         await this.btn_phone_number.fill(phonenumber);
@@ -150,6 +156,18 @@ exports.StaffManagementPageObject = class StaffManagementPageObject {
 
     async TC_07() {
         console.log("Verify updates when user updated commission role");
+
+        console.log("Click commission role");
+        await this.btn_commission.click();
+
+        console.log("Click to check percentage for commission 40-60")
+        await this.btn_4060.first().click();
+
+        console.log("Click to check percentage for gratuity 50-50")
+        await this.btn_5050.nth(1).click();
+
+        console.log("Click btn update");
+        await this.btn_update.nth(1).click();
     }
 
     async TC_08() {

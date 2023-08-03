@@ -63,7 +63,7 @@ exports.CheckoutPageObject = class CheckoutPageObject {
 
     async staffandservice01() {
         console.log("Choose staff 1 and select services for it");
-        await this.btn_staff1.click();
+        await this.btn_staff1.first().click();
         if (await this.btn_select.first().isVisible()) {
             await this.btn_select.first().click();
         }
@@ -134,7 +134,9 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_add_staff.click();
         await this.staffandservice02();
         await this.btn_external_credit_card.click();
-        await this.enterPasscode();
+        if (this.server.DOMAIN == this.server._STAG || this.server.DOMAIN == this.server._DEV) {
+            await this.enterPasscode();
+        }
         await this.input_number_card.fill(this.account.EXTERNAL_CARD_ID);
         await this.btn_payment_cash.click();
         if (await this.checkbox_prinf_confirm.isVisible()) {
@@ -149,7 +151,9 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_discount_percent.click();
         await this.btn_save.click();
         await this.btn_external_credit_card.click();
-        await this.enterPasscode();
+        if (this.server.DOMAIN == this.server._STAG || this.server.DOMAIN == this.server._DEV) {
+            await this.enterPasscode();
+        }
         await this.input_number_card.fill(this.account.EXTERNAL_CARD_ID);
         await this.btn_payment_cash.click();
         if (await this.checkbox_prinf_confirm.isVisible()) {
@@ -166,7 +170,9 @@ exports.CheckoutPageObject = class CheckoutPageObject {
         await this.btn_discount_percent.click();
         await this.btn_save.click();
         await this.btn_external_credit_card.click();
-        await this.enterPasscode();
+        if (this.server.DOMAIN == this.server._STAG || this.server.DOMAIN == this.server._DEV) {
+            await this.enterPasscode();
+        }
         await this.input_number_card.fill(this.account.EXTERNAL_CARD_ID);
         await this.btn_payment_cash.click();
         if (await this.checkbox_prinf_confirm.isVisible()) {

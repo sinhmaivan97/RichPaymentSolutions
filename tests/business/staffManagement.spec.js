@@ -3,7 +3,7 @@ const { POM_Management } = require('../../pageObjects/POM_Management');
 
 test.describe('all staff page cases', () => {
   let page, pom_manager, staffPage, account, correct_infor, incorrect_infor;
-  let error_name, error_email, error_phone, error_passcode, add_success_message, update_success_message, delete_success_message;
+  let error_name, error_email, error_phone, update_commission_success, add_success_message, update_success_message, delete_success_message;
 
   test.beforeAll(async ({ browser }) => {
     account = JSON.parse(JSON.stringify(require('../../data/account_test.json')));
@@ -18,10 +18,10 @@ test.describe('all staff page cases', () => {
     error_name = page.locator("//p[contains(text(),'This field cannot be blank')]");
     error_email = page.locator("//p[contains(text(),'Email is not valid.')]");
     error_phone = page.locator("//p[contains(text(),'Invalid phone number.')]");
-    error_passcode = page.locator("//p[contains(text(),'Please enter 4 numbers for the passcode')]");
     add_success_message = page.locator("//div[contains(text(),'Create staff success')]");
     update_success_message = page.locator("//div[contains(text(),'Update staff success')]");
-    delete_success_message = page.locator("//div[contains(text(),'Delete staff Account demo success')]");
+    delete_success_message = page.locator("//div[contains(text(),'Delete staff ')]");
+    update_commission_success = page.locator("//div[contains(text(),'Update Commission success')]");
   });
 
   test('TC_01', async ({ page }) => {
@@ -60,19 +60,20 @@ test.describe('all staff page cases', () => {
 
   test('TC_06', async ({ page }) => {
     /* Description TC06 - Verify updates when user enters all correct data*/
-    await staffPage.TC_06("1111111111", "emailfortest@gmail.com");
+    await staffPage.TC_06(correct_infor.username, correct_infor.phone_number, correct_infor.email_address);
     await expect(update_success_message).toHaveText('Update staff success');
   });
 
-  test.skip('TC_07', async ({ page }) => {
+  test('TC_07', async ({ page }) => {
     /* Description TC07 - Verify updates when user updated commission role*/
     await staffPage.TC_07();
+    await expect(update_commission_success).toHaveText('Update Commission success');
   });
 
   test('TC_08', async ({ page }) => {
     /* Description TC08 - Verify data when user deletes staff*/
     await staffPage.TC_08();
-    await expect(delete_success_message).toHaveText('Delete staff Account demo success');
+    await expect(delete_success_message).toHaveText('Delete staff ' + correct_infor.username + ' success');
   });
 
   test.afterAll(async () => {

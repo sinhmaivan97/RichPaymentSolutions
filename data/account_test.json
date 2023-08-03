@@ -2,5 +2,8 @@
     "username": "Tester",
     "password": "a123456789",
     "GIFT_CARD_ID": "010199",
-    "EXTERNAL_CARD_ID": "6868"
+    "EXTERNAL_CARD_ID": "6868",
+    "CategoryName": "Category_Test",
+    "ServiceName": "Service_Test",
+    "PriceService": "1"
 }

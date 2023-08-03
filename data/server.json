@@ -1,5 +1,5 @@
 {
-    "DOMAIN": "https://landing.stage.devrpay.com/login",
+    "DOMAIN": "https://app.getrichpos.com/checkout",
     "_DEV": "https://landing.devrpay.com/login",
     "_STAG": "https://landing.stage.devrpay.com/login",
     "_PROD": "https://app.getrichpos.com/checkout"
