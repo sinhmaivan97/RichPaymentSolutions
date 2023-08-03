@@ -9,7 +9,14 @@ exports.PaymentSettingPageObject = class PaymentSettingPageObject {
 
         this.btn_register = page.locator("//button[contains(text(),'Login')]");
         this.btn_business = page.getByRole('link', { name: 'Business Settings Business Settings' });
-        this.btn_payment_setting = page.getByText('Payment Setting');
+        this.btn_payment_ticket = page.getByText('Payment Setting');
+        this.btn_payment_setting = page.locator('.MuiSwitch-input');
+        this.btn_update_setting = page.getByRole('button', { name: 'Update' });
+        this.btn_checkout_route = page.locator("//ul[@data-test-id='checkout-route']");
+        this.btn_cash = page.locator("//button[@data-test-id='btn-cash-payment']");
+        this.btn_credit = page.locator("//button[@data-test-id='btn-credit-payment']");
+        this.btn_external = page.locator("//button[@data-test-id='btn-external-credit-card-payment']");
+        this.btn_giftcard = page.locator("//button[@data-test-id='btn-giftcard-payment']");
 
         this.server = JSON.parse(JSON.stringify(require('../../data/server.json')));
     }
@@ -41,6 +48,32 @@ exports.PaymentSettingPageObject = class PaymentSettingPageObject {
         await this.btn_business.click();
         await this.enterPasscode();
 
-        await this.btn_payment_setting.click();
+        await this.btn_payment_ticket.click();
+    }
+
+    async TC_01() {
+        console.log("Double click to payment method");
+        await this.btn_payment_setting.first().uncheck({ force: true });
+
+        console.log("Click to update button");
+        await this.btn_update_setting.click();
+
+        console.log("Verify update success");
+        await expect().toHaveText("Update Payment method success.");
+
+        console.log("Click to checkout route");
+        await this.btn_checkout_route.click();
+
+        console.log("Choose staff 1");
+        await this.btn_staff1.first().click();
+        if (await this.btn_select.first().isVisible()) {
+            await this.btn_select.first().click();
+        }
+
+        console.log("Check cash btn, credit btn, external btn, giftcard btn is not visiable");
+        await this.btn_cash.not.toBeVisible();
+        await this.btn_credit.not.toBeVisible();
+        await this.btn_external.not.toBeVisible();
+        await this.btn_giftcard.not.toBeVisible();
     }
 }

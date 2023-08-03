@@ -13,8 +13,9 @@ test.describe('all payment setting cases', () => {
     await paymentsettingPage.gotoPaymentPage(account.username, account.password);
   });
 
-  test('TC_01', async ({ page }) => {
-
+  test.skip('TC_01', async ({ page }) => {
+    /*Description TC_01 : Turn on all payment thod and checkin in checkout role*/
+    paymentsettingPage.TC_01();
   });
 
   test.afterAll(async () => {
