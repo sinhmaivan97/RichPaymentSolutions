@@ -1,4 +1,4 @@
-const { expect, test } = require('@playwright/test');
+import { test, expect } from '@playwright/test';
 
 test('all case setting payment method', async ({ page }) => {
   await page.goto('https://landing.getrichpos.com/login');

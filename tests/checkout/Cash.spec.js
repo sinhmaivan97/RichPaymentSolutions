@@ -1,5 +1,5 @@
-const { expect, test } = require('@playwright/test');
-const { POM_Management } = require('../../pageObjects/POM_Management');
+import { test, expect } from '@playwright/test';
+import { POM_Management } from '../../pageObjects/POM_Management';
 
 test.describe('all pay in cash cases', () => {
     let page, pom_manager, checkoutPage, message_success, account, btn_select;
