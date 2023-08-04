@@ -14,7 +14,6 @@ import { CheckoutSettingPageObject } from '../pageObjects/business/CheckoutSetti
 import { CustomerSettingPageObject } from '../pageObjects/business/CustomerSettingPageObject';
 import { DisplaySettingPageObject } from '../pageObjects/business/DisplaySettingPageObject';
 import { GiftcardPageObject } from '../pageObjects/business/GiftcardPageObject';
-import { PaymentSettingPageObject } from '../pageObjects/business/PaymentSettingPageObject';
 
 exports.POM_Management = class POM_Management {
 
@@ -36,7 +35,6 @@ exports.POM_Management = class POM_Management {
     this.customerSettingPageObject = new CustomerSettingPageObject(this.page);
     this.displaySettingPageObject = new DisplaySettingPageObject(this.page);
     this.giftcardPageObject = new GiftcardPageObject(this.page);
-    this.paymentSettingPageObject = new PaymentSettingPageObject(this.page);
   }
 
   getRegisterPage() {
@@ -101,9 +99,5 @@ exports.POM_Management = class POM_Management {
 
   getGiftcardPage() {
     return this.giftcardPageObject;
-  }
-
-  getPaymentSettingPage() {
-    return this.paymentSettingPageObject;
   }
 }
