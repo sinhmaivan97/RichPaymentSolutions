@@ -3,7 +3,8 @@ import { POM_Management } from '../../pageObjects/POM_Management';
 
 test.describe('all staff page cases', () => {
   let page, pom_manager, staffPage, account, correct_infor, incorrect_infor;
-  let error_name, error_email, error_phone, update_commission_success, add_success_message, update_success_message, delete_success_message;
+  let error_name, error_email, error_phone, update_commission_success, add_success_message,
+    update_success_message, delete_success_message;
 
   test.beforeAll(async ({ browser }) => {
     account = JSON.parse(JSON.stringify(require('../../data/account_test.json')));

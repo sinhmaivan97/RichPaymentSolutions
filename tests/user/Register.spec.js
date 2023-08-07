@@ -3,7 +3,8 @@ import { POM_Management } from '../../pageObjects/POM_Management';
 
 test.describe('all register cases', () => {
 	let page, pom_manager, registerPage, correct, incorrect;
-	let text_user, text_business, text_phonenumber, text_email, text_pass, text_confirm_pass, success_message, already_exist_account_message;
+	let text_user, text_business, text_phonenumber, text_email, text_pass, text_confirm_pass, success_message,
+		already_exist_account_message;
 
 	test.beforeAll(async ({ browser }) => {
 		page = await browser.newPage();

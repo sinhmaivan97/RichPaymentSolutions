@@ -1,6 +1,6 @@
 {
-    "DOMAIN": "https://app.getrichpos.com/checkout",
-    "_DEV": "https://landing.devrpay.com/login",
-    "_STAG": "https://landing.stage.devrpay.com/login",
-    "_PROD": "https://app.getrichpos.com/checkout"
+    "DOMAIN": "https://app.getrichpos.com/",
+    "_DEV": "https://landing.devrpay.com/",
+    "_STAG": "https://landing.stage.devrpay.com/",
+    "_PROD": "https://app.getrichpos.com/"
 }

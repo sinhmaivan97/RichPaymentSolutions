@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { POM_Management } from '../../pageObjects/POM_Management';
 
 test.describe('all pay in cash cases', () => {
-    let page, pom_manager, checkoutPage, message_success, account, btn_select;
+    let page, pom_manager, checkoutPage, message_success, account;
 
     test.beforeAll(async ({ browser }) => {
         account = JSON.parse(JSON.stringify(require('../../data/account_test.json')));

@@ -3,7 +3,8 @@ import { POM_Management } from '../../pageObjects/POM_Management';
 
 test.describe('all service page cases', () => {
   let page, pom_manager, servicePage, account;
-  let delete_category_success_message, update_category_success_message, account_test, add_category_success_message, add_product_success_message;
+  let delete_category_success_message, update_category_success_message, account_test,
+    add_category_success_message, add_product_success_message;
 
   test.beforeAll(async ({ browser }) => {
     account = JSON.parse(JSON.stringify(require('../../data/account_test.json')));
